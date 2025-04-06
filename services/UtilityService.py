@@ -1,5 +1,6 @@
 import kagglehub
 from kagglehub import KaggleDatasetAdapter
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 import requests
 import zipfile

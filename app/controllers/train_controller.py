@@ -1,4 +1,5 @@
 from fastapi import APIRouter, FastAPI, File, UploadFile
+from models.TrainRequest import TrainRequest
 from models.TrainingResponse import TrainingResponse
 from services.DataLoaderService import DataLoaderService
 from services.PreprocessorService import PreprocessorService
@@ -18,30 +19,19 @@ Something like this:
 trainRouter = APIRouter()
 
 @trainRouter.post("/train")
-async def train_model():
+async def train_model(request: TrainRequest):
     """
-    Endpoint to train the model. This endpoint is used to trigger the training process and return the model path and best parameters.
+    Endpoint to train the model with optional cross-validation.
     """
     try:
-        data_loader_service = DataLoaderService()
-        df_container = data_loader_service.load_all_datasets()
-
-        preprocessor_service = PreprocessorService(df_container)
-        df = preprocessor_service.preprocess_all()
-
-        training_data_processor_service = TrainingDataProcessorService(df)
-        X_train, X_test, y_train, y_test = training_data_processor_service.split_dataset()
-
-        training_pipeline_service = TrainingPipelineService()
-        model, best_params = training_pipeline_service.train_random_forest(X_train, y_train)
-
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        model_path = f"snapshots/best_rf_model_{timestamp}.pkl"
+        model, model_path = TrainingPipelineService().train_random_forest(
+            perform_CV=request.perform_cv, 
+            verbose=3
+        )
 
         return TrainingResponse(
             message="Model trained successfully",
-            model_path=model_path,
-            best_params=best_params
+            model_path=model_path
         )
     except Exception as e:
         return {"error": str(e)}

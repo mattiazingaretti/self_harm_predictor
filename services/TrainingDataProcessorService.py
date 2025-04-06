@@ -1,3 +1,6 @@
+from datetime import datetime
+import os
+import joblib
 import pandas as pd
 from models.SelfHarmDatasetsContainer import SelfHarmDatasetsContainer
 from sklearn.model_selection import train_test_split
@@ -24,7 +27,8 @@ class TrainingDataProcessorService:
         return combined_data.dropna()
     
 
-    def split_dataset(self, 
+    def split_dataset(self,
+                        model_name: str, 
                         max_features=5000,
                         stop_words='english',
                         test_size=0.2,
@@ -32,5 +36,10 @@ class TrainingDataProcessorService:
         tfidf = TfidfVectorizer(max_features=max_features, stop_words=stop_words)
         X = tfidf.fit_transform(self.combined_data['text']).toarray()
         y = self.combined_data['label'].values
+
+        os.makedirs('snapshots', exist_ok=True)
+        
+        joblib.dump(tfidf, f"snapshots/tfidf_vectorizer_{os.path.splitext(model_name)[0]}.pkl")
+
 
         return train_test_split(X, y, test_size=test_size, random_state=random_state)
