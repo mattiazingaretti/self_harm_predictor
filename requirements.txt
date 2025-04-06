@@ -1,2 +1,5 @@
 kagglehub[pandas-datasets]
-sklearn
+scikit-learn
+fastapi 
+uvicorn 
+gradio

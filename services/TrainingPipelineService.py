@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import joblib
 from sklearn.ensemble import RandomForestClassifier
@@ -5,7 +6,7 @@ from sklearn.model_selection import GridSearchCV
 from services.TrainingDataProcessorService import TrainingDataProcessorService
 from services.DataLoaderService import DataLoaderService
 from services.PreprocessorService import PreprocessorService
-
+from contextlib import redirect_stdout
 
 class TrainingPipelineService:
 
@@ -33,15 +34,22 @@ class TrainingPipelineService:
         grid_search = GridSearchCV(
                estimator=model,
                param_grid=param_grid,
-               cv=5,
+               cv=2,
                scoring='f1',
                n_jobs=-1,
                verbose = verbose
         )
-        grid_search.fit(X_train, y_train)
+        with open('logs/training_rf_cv.log', 'w') as log_file:
+            with redirect_stdout(log_file):
+                grid_search.fit(X_train, y_train)
+
+        print("Best parameters found: ", grid_search.best_params_)        
         
         os.makedirs('snapshots', exist_ok=True)
-        joblib.dump(grid_search.best_estimator_, 'snapshots/best_rf_model.pkl')
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        model_path = f"snapshots/best_rf_model_{timestamp}.pkl"
+        
+        joblib.dump(grid_search.best_estimator_, model_path)
 
-        return model, X_test, y_test
+        return model, grid_search.best_params_
         

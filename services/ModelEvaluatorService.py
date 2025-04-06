@@ -4,12 +4,13 @@ from sklearn.metrics import accuracy_score, classification_report
 
 class ModelEvaluatorService:
 
-    def __init__(self, X_test, y_test):
+    def __init__(self, X_test, y_test, model_name = "best_rf_model.pkl"):
+        
         self.X_test = X_test
         self.y_test = y_test
 
         try:
-            self.model = joblib.load('snapshot/best_rf_model.pkl')
+            self.model = joblib.load(f"snapshots\\{model_name}")
         except FileNotFoundError:
             raise FileNotFoundError("Model file not found. Please train the model first.")
 

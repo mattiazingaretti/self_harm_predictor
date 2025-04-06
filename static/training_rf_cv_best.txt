@@ -1,0 +1,62 @@
+Fitting 5 folds for each of 12 candidates, totalling 60 fits
+[CV 2/5] END max_depth=15, min_samples_split=2, n_estimators=100;, score=0.627 total time= 2.1min
+[CV 1/5] END max_depth=15, min_samples_split=2, n_estimators=100;, score=0.619 total time= 2.1min
+[CV 3/5] END max_depth=15, min_samples_split=2, n_estimators=100;, score=0.620 total time= 2.2min
+[CV 4/5] END max_depth=15, min_samples_split=2, n_estimators=100;, score=0.630 total time= 3.4min
+[CV 5/5] END max_depth=15, min_samples_split=5, n_estimators=100;, score=0.619 total time= 4.0min
+[CV 5/5] END max_depth=15, min_samples_split=2, n_estimators=100;, score=0.623 total time= 5.6min
+[CV 3/5] END max_depth=15, min_samples_split=5, n_estimators=100;, score=0.625 total time= 6.6min
+[CV 1/5] END max_depth=15, min_samples_split=5, n_estimators=100;, score=0.618 total time= 6.6min
+[CV 4/5] END max_depth=15, min_samples_split=5, n_estimators=100;, score=0.624 total time= 6.6min
+[CV 2/5] END max_depth=15, min_samples_split=5, n_estimators=100;, score=0.621 total time= 6.7min
+[CV 5/5] END max_depth=15, min_samples_split=2, n_estimators=200;, score=0.624 total time= 8.3min
+[CV 1/5] END max_depth=20, min_samples_split=2, n_estimators=100;, score=0.637 total time= 6.2min
+[CV 2/5] END max_depth=15, min_samples_split=2, n_estimators=200;, score=0.620 total time=10.6min
+[CV 4/5] END max_depth=15, min_samples_split=2, n_estimators=200;, score=0.629 total time=10.8min
+[CV 3/5] END max_depth=15, min_samples_split=2, n_estimators=200;, score=0.624 total time=10.8min
+[CV 1/5] END max_depth=15, min_samples_split=2, n_estimators=200;, score=0.620 total time=11.0min
+[CV 1/5] END max_depth=15, min_samples_split=5, n_estimators=200;, score=0.620 total time=11.0min
+[CV 3/5] END max_depth=15, min_samples_split=5, n_estimators=200;, score=0.627 total time= 9.3min
+[CV 2/5] END max_depth=20, min_samples_split=2, n_estimators=100;, score=0.635 total time= 6.0min
+[CV 4/5] END max_depth=15, min_samples_split=5, n_estimators=200;, score=0.626 total time= 9.4min
+[CV 2/5] END max_depth=15, min_samples_split=5, n_estimators=200;, score=0.625 total time= 9.8min
+[CV 5/5] END max_depth=15, min_samples_split=5, n_estimators=200;, score=0.621 total time= 9.2min
+[CV 4/5] END max_depth=20, min_samples_split=2, n_estimators=100;, score=0.646 total time= 6.3min
+[CV 3/5] END max_depth=20, min_samples_split=2, n_estimators=100;, score=0.643 total time= 6.6min
+[CV 5/5] END max_depth=20, min_samples_split=2, n_estimators=100;, score=0.633 total time= 6.6min
+[CV 1/5] END max_depth=20, min_samples_split=5, n_estimators=100;, score=0.637 total time= 5.3min
+[CV 2/5] END max_depth=20, min_samples_split=5, n_estimators=100;, score=0.638 total time= 5.3min
+[CV 3/5] END max_depth=20, min_samples_split=5, n_estimators=100;, score=0.640 total time= 5.3min
+[CV 5/5] END max_depth=20, min_samples_split=5, n_estimators=100;, score=0.636 total time= 5.2min
+[CV 4/5] END max_depth=20, min_samples_split=5, n_estimators=100;, score=0.646 total time= 6.0min
+[CV 1/5] END max_depth=20, min_samples_split=2, n_estimators=200;, score=0.645 total time=11.2min
+[CV 2/5] END max_depth=20, min_samples_split=2, n_estimators=200;, score=0.642 total time=10.4min
+[CV 3/5] END max_depth=20, min_samples_split=2, n_estimators=200;, score=0.644 total time=10.5min
+[CV 4/5] END max_depth=20, min_samples_split=2, n_estimators=200;, score=0.647 total time=10.3min
+[CV 5/5] END max_depth=20, min_samples_split=2, n_estimators=200;, score=0.637 total time=10.5min
+[CV 1/5] END max_depth=20, min_samples_split=5, n_estimators=200;, score=0.640 total time=10.8min
+[CV 2/5] END max_depth=20, min_samples_split=5, n_estimators=200;, score=0.638 total time=10.8min
+[CV 5/5] END max_depth=20, min_samples_split=5, n_estimators=200;, score=0.636 total time=11.7min
+[CV 4/5] END max_depth=20, min_samples_split=5, n_estimators=200;, score=0.645 total time=12.0min
+[CV 3/5] END max_depth=20, min_samples_split=5, n_estimators=200;, score=0.644 total time=12.1min
+[CV 1/5] END max_depth=None, min_samples_split=2, n_estimators=100;, score=0.549 total time=20.5min
+[CV 3/5] END max_depth=None, min_samples_split=2, n_estimators=100;, score=0.520 total time=20.3min
+[CV 2/5] END max_depth=None, min_samples_split=2, n_estimators=100;, score=0.518 total time=20.5min
+[CV 4/5] END max_depth=None, min_samples_split=2, n_estimators=100;, score=0.526 total time=20.4min
+[CV 5/5] END max_depth=None, min_samples_split=2, n_estimators=100;, score=0.503 total time=20.6min
+[CV 1/5] END max_depth=None, min_samples_split=5, n_estimators=100;, score=0.603 total time=19.5min
+[CV 3/5] END max_depth=None, min_samples_split=5, n_estimators=100;, score=0.595 total time=19.4min
+[CV 2/5] END max_depth=None, min_samples_split=5, n_estimators=100;, score=0.586 total time=19.5min
+[CV 4/5] END max_depth=None, min_samples_split=5, n_estimators=100;, score=0.593 total time=18.0min
+[CV 5/5] END max_depth=None, min_samples_split=5, n_estimators=100;, score=0.584 total time=18.2min
+[CV 1/5] END max_depth=None, min_samples_split=2, n_estimators=200;, score=0.560 total time=31.8min
+[CV 2/5] END max_depth=None, min_samples_split=2, n_estimators=200;, score=0.525 total time=31.8min
+[CV 5/5] END max_depth=None, min_samples_split=2, n_estimators=200;, score=0.521 total time=30.1min
+[CV 4/5] END max_depth=None, min_samples_split=2, n_estimators=200;, score=0.543 total time=30.2min
+[CV 3/5] END max_depth=None, min_samples_split=2, n_estimators=200;, score=0.529 total time=30.4min
+[CV 1/5] END max_depth=None, min_samples_split=5, n_estimators=200;, score=0.613 total time=25.4min
+[CV 2/5] END max_depth=None, min_samples_split=5, n_estimators=200;, score=0.593 total time=18.7min
+[CV 4/5] END max_depth=None, min_samples_split=5, n_estimators=200;, score=0.597 total time=17.4min
+[CV 3/5] END max_depth=None, min_samples_split=5, n_estimators=200;, score=0.602 total time=17.5min
+[CV 5/5] END max_depth=None, min_samples_split=5, n_estimators=200;, score=0.590 total time=17.3min
+Model training completed and saved to 'snapshots/best_rf_model.pkl'.
