@@ -1,3 +1,4 @@
+import os
 import joblib
 from sklearn.metrics import accuracy_score, classification_report
 
@@ -11,6 +12,7 @@ class ModelEvaluatorService:
 
         try:
             self.model = joblib.load(f"snapshots\\{model_name}")
+            self.tokenizer = joblib.load(f"snapshots\\tfidf_vectorizer_{os.path.splitext(model_name)[0]}.pkl")
         except FileNotFoundError:
             raise FileNotFoundError("Model file not found. Please train the model first.")
 

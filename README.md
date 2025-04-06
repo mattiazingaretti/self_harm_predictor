@@ -4,7 +4,7 @@ A machine learning project that uses Natural Language Processing (NLP) to analyz
 
 ## Overview
 
-This project combines multiple mental health-related datasets from different sources (Kaggle, Reddit, Twitter) to train a machine learning model that can identify potential self-harm content. The model uses TF-IDF vectorization and Random Forest classification with optimized hyperparameters, exposed through a FastAPI interface.
+This project combines multiple mental health-related datasets from different sources (Kaggle, Reddit, Twitter) to train a machine learning model that can identify potential self-harm content. The model uses TF-IDF vectorization and Random Forest classification with optimized hyperparameters, exposed through both FastAPI and Gradio interfaces.
 
 ## Features
 
@@ -15,6 +15,7 @@ This project combines multiple mental health-related datasets from different sou
 - Model evaluation with accuracy and classification reports
 - Automated training pipeline
 - RESTful API endpoints for model training and evaluation
+- Interactive Gradio web interface for model training and testing
 
 ## Requirements
 
@@ -24,6 +25,7 @@ scikit-learn
 fastapi
 uvicorn
 gradio
+requests
 ```
 
 ## Project Structure
@@ -33,10 +35,16 @@ self_harm_predictor/
 ├── app/
 │   ├── controllers/
 │   │   ├── evaluate_controller.py
+│   │   ├── test_controller.py
 │   │   └── train_controller.py
+│   ├── interfaces/
+│   │   ├── evaluate_gradio_interface.py
+│   │   ├── test_gradio_interface.py
+│   │   └── train_gradio_interface.py
 │   └── __init__.py
 ├── models/
 │   ├── SelfHarmDatasetsContainer.py
+│   ├── TrainRequest.py
 │   └── TrainingResponse.py
 ├── services/
 │   ├── DataLoaderService.py
@@ -71,21 +79,30 @@ pip install -r requirements.txt
 
 ## Usage
 
-Start the FastAPI server:
+Start the FastAPI server and Gradio interface:
 
 ```bash
 python main.py
 ```
 
-The server will start at `http://127.0.0.1:8000`. Available endpoints:
+The application will be available at:
+- FastAPI server: `http://127.0.0.1:8000`
+- Gradio interface: `http://127.0.0.1:8000/gradio`
 
+Available endpoints:
+- `GET /test` - Test text for self-harm content
 - `POST /train` - Train a new model
 - `POST /evaluate` - Evaluate the current model
+
+The Gradio interface provides three tabs:
+1. **Train Model**: Train a new model with or without cross-validation
+2. **Analyze Text**: Test individual text samples for self-harm content
+3. **Evaluate Model**: View model performance metrics
 
 ## Example of the API usage 
 
 Example evaluation response:
-![RF Test Metrics](static/rf_test_metrics.png)
+![RF Test Metrics](static/rf_test_class_1.png)
 
 The evaluation endpoint returns detailed metrics including:
 - Accuracy score
@@ -96,7 +113,9 @@ The evaluation endpoint returns detailed metrics including:
   - Support
 - Per-class metrics for both negative and positive cases
 
-The trained model will be saved in `snapshots/best_rf_model_{timestamp}.pkl`.
+Models and vectorizers are saved in the `snapshots` directory with timestamps:
+- Model: `best_rf_model_{timestamp}.pkl`
+- Vectorizer: `tfidf_vectorizer_best_rf_model_{timestamp}.pkl`
 
 ## Model Performance
 

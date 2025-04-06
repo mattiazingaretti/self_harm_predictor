@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 import requests
-
+import gradio as gr
 
 def evaluate_model(model_name: str):
     """
@@ -27,3 +27,14 @@ def evaluate_model(model_name: str):
         return f"Error connecting to API: {str(e)}"
 
 
+evaluate_model_interface = gr.Interface(
+    fn=evaluate_model,
+    inputs=gr.Textbox(
+        label="Model Name",
+        placeholder="Enter model name (e.g. best_rf_model_[timestamp].pkl)"
+    ),
+    outputs="text",
+    title="Self Harm Predictor - Model Evaluation",
+    description="Evaluate model performance on the test dataset",
+    theme="default"
+)
