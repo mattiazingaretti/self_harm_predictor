@@ -1,4 +1,4 @@
-import UtilityService
+from services import UtilityService
 from models.SelfHarmDatasetsContainer import SelfHarmDatasetsContainer
 
 class DataLoaderService:
@@ -10,7 +10,8 @@ class DataLoaderService:
             "szegeelim/mental-health",
             "Combined Data.csv"
         )
-
+    
+    # FIXME: The dataset file present an encoding problem when loading with pandas on Windows
     def load_reddit_dataset(self):
         return UtilityService.load_kaggle_dataset(
             "neelghoshal/reddit-mental-health-data",
@@ -20,7 +21,7 @@ class DataLoaderService:
     def load_suicidal_tweet_dataset(self):
         return UtilityService.load_kaggle_dataset(
             "aunanya875/suicidal-tweet-detection-dataset",
-            "data_to_be_cleansed.csv"
+            "Suicide_Ideation_Dataset(Twitter-based).csv"
         )
     
     def load_dreaddit_dataset(self):
@@ -30,7 +31,7 @@ class DataLoaderService:
     def load_all_datasets(self):
         return SelfHarmDatasetsContainer(
           mental_health_data=self.load_mental_health_dataset(),
-          reddit_mental_health_data=self.load_reddit_dataset(),
+          reddit_mental_health_data=None, #see FIXME above
           suicidal_tweet_detection_dataset=self.load_suicidal_tweet_dataset(),
           dreaddit=self.load_dreaddit_dataset()
-        )  
+        ) 

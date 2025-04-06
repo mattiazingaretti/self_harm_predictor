@@ -1,8 +1,9 @@
 class SelfHarmDatasetsContainer:
 
     def __init__(self , mental_health_data, reddit_mental_health_data, suicidal_tweet_detection_dataset, dreaddit):
-        if (mental_health_data is None or reddit_mental_health_data is None or suicidal_tweet_detection_dataset is None or dreaddit is None):
-            raise ValueError("All datasets must be provided")
+        # SEE FIXME in DataLoaderService.py
+        # if (mental_health_data is None or reddit_mental_health_data is None or suicidal_tweet_detection_dataset is None or dreaddit is None):
+            # raise ValueError("All datasets must be provided")
         self.mental_health_data = mental_health_data
         self.reddit_mental_health_data = reddit_mental_health_data
         self.suicidal_tweet_detection_dataset = suicidal_tweet_detection_dataset

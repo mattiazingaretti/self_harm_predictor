@@ -7,7 +7,7 @@ from io import BytesIO
 import pandas as pd
 
 
-def load_kaggle_dataset( dataset_name, file_name):
+def load_kaggle_dataset( dataset_name, file_name, verbose = True):
     """
     Loads a dataset from Kaggle using the KaggleHub library.
     
@@ -21,10 +21,11 @@ def load_kaggle_dataset( dataset_name, file_name):
     if dataset_name is None or file_name is None:
         raise ValueError("Dataset name and file name must be provided.")
     
-    return kagglehub.load_dataset(
-            KaggleDatasetAdapter.PANDAS,
-            dataset_name,
-            file_name)
+    df_path = kagglehub.dataset_download(dataset_name, path=file_name)
+    if verbose:
+        print(f"Loaded {len(df_path)} rows from {file_name} in the dataset {dataset_name} and stored at {df_path}")
+        
+    return pd.read_csv(df_path)
 
 
 def load_dataset_from_zip(url, verbose = True):
