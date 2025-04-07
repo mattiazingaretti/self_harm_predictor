@@ -1,6 +1,8 @@
 import os
 import joblib
-from sklearn.metrics import accuracy_score, classification_report
+import pandas as pd
+from sklearn.decomposition import TruncatedSVD
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 
 class ModelEvaluatorService:
@@ -21,9 +23,28 @@ class ModelEvaluatorService:
         y_pred = self.model.predict(self.X_test)
         accuracy = accuracy_score(self.y_test, y_pred)
         report = classification_report(self.y_test, y_pred)
+        cm = confusion_matrix(self.y_test, y_pred)
+        
 
+        if hasattr(self.X_test, "toarray"):  
+            X_dense = self.X_test.toarray()
+        else:
+            X_dense = self.X_test
+        
+        if X_dense.shape[1] > 1000:  # If too many features
+            svd = TruncatedSVD(n_components=100)
+            X_reduced = svd.fit_transform(X_dense)
+            corr_matrix = pd.DataFrame(X_reduced).corr()
+            print("Truncated  Correlation Matrix")
+        else:
+            corr_matrix = pd.DataFrame(X_dense).corr()
+            
         if verbose:
             print("Accuracy:", accuracy_score(self.y_test, y_pred))
             print("Classification Report:\n", classification_report(self.y_test, y_pred))
-
-        return accuracy, report
+            print("\nConfusion Matrix:\n", cm)
+            print("\nCorrelation Matrix:")
+            print(corr_matrix.to_string())
+        
+        return accuracy, report, cm, corr_matrix
+        
